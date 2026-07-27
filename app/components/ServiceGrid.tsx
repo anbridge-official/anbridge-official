@@ -1,65 +1,17 @@
-type ServiceCardProps = {
-  title: string;
-  subtitle: string;
-  description: string;
-  button: string;
-};
+import CTA from "./CTA";
 
-function ServiceCard({
-  title,
-  subtitle,
-  description,
-  button,
-}: ServiceCardProps) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-transform hover:-translate-y-1">
-      <h3 className="mb-2 text-xl font-bold">{title}</h3>
-      <p className="mb-2 font-semibold text-primary">{subtitle}</p>
-      <p className="mb-4 text-gray-600">{description}</p>
-      <a
-        href="https://line.me/R/ti/p/@anbridge"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="rounded-lg bg-primary px-4 py-2 text-white shadow transition-transform hover:scale-105"
-      >
-        {button}
-      </a>
-    </div>
-  );
-}
+const services = [
+  { title: "信用卡換現金", detail: "最高參考實拿 92%" },
+  { title: "刷卡換現金", detail: "最高參考實拿 92%" },
+  { title: "電信小額換現金", detail: "三大電信・Google Pay・Apple Pay" },
+  { title: "後支付換現金", detail: "先確認您使用的平台與可用額度", platforms: ["AFTEE", "街口", "分期服務", "其他平台"] },
+];
 
 export default function ServiceGrid() {
   return (
-    <section id="services" className="mx-auto max-w-6xl px-6 py-16">
-      <h2 className="mb-6 text-center text-3xl font-bold">
-        四大服務，一站完成評估
-      </h2>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <ServiceCard
-          title="信用卡換現金"
-          subtitle="最高參考實拿92%"
-          description="依信用卡額度評估"
-          button="立即了解"
-        />
-        <ServiceCard
-          title="刷卡換現金"
-          subtitle="最高參考實拿92%"
-          description="流程透明"
-          button="立即了解"
-        />
-        <ServiceCard
-          title="電信小額換現金"
-          subtitle="三大電信 / Google Pay / Apple Pay"
-          description="依額度評估收購金額"
-          button="立即詢問"
-        />
-        <ServiceCard
-          title="後支付換現金"
-          subtitle="業界最高5～7折"
-          description="依平台額度評估"
-          button="立即詢問"
-        />
-      </div>
-    </section>
+    <section id="services" className="bg-slate-50 px-6 py-16 sm:px-8 lg:py-20"><div className="mx-auto max-w-6xl">
+      <div className="max-w-2xl"><p className="text-sm font-semibold tracking-[0.18em] text-blue-700">SERVICES</p><h2 className="mt-3 text-3xl font-bold text-slate-950 sm:text-4xl">安沛四大服務</h2><p className="mt-4 text-slate-600">先在 LINE 確認適用方式、預估實拿與所有費用。</p></div>
+      <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{services.map((service, index) => <article key={service.title} className="flex min-h-72 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><span className="text-sm font-bold text-blue-700">0{index + 1}</span><h3 className="mt-6 text-xl font-bold text-slate-950">{service.title}</h3><p className="mt-3 leading-relaxed text-slate-600">{service.detail}</p>{service.platforms && <div className="mt-5 flex flex-wrap gap-2">{service.platforms.map((platform) => <span key={platform} className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800">{platform}</span>)}</div>}<div className="mt-auto pt-6"><CTA /></div></article>)}</div>
+    </div></section>
   );
 }

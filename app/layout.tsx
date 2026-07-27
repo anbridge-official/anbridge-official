@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://anbridge.vercel.app"),
   title: "信用卡換現金｜刷卡換現金｜最高參考實拿92%｜安沛",
   description:
     "安沛提供信用卡換現金、刷卡換現金、電信小額換現金、後支付換現金服務，最高參考實拿92%，立即加入LINE了解預估實拿金額。",
