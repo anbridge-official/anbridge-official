@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anbridge.vercel.app/sitemap.xml

@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全域字體設定 */
+html, body {
+  @apply bg-white text-gray-900 font-sans;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
+/* 主色調按鈕樣式 */
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-lg shadow hover:scale-105 transition-transform;
+}
+
+/* 成功提示樣式 */
+.text-success {
+  @apply text-success font-bold;
+}
+
+/* FAQ 展開樣式 */
+details summary {
+  @apply cursor-pointer font-semibold;
+}
+details[open] summary {
+  @apply text-primary;
+}
+
+/* Footer */
+footer {
+  @apply bg-gray-100 text-gray-600 text-sm;
+}
