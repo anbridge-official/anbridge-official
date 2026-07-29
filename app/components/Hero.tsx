@@ -1,37 +1,3 @@
 import CTA from "./CTA";
-
-const services = ["信用卡換現金", "刷卡換現金", "電信小額換現金", "後支付換現金"];
-const promises = ["辦理前確認預估實拿", "辦理前確認所有費用", "不會面交才臨時加價", "確認後才安排辦理"];
-
-export default function Hero() {
-  return (
-    <section className="overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 px-6 py-16 text-white sm:px-8 lg:py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex items-center gap-3">
-          <span aria-hidden="true" className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-sky-300 to-blue-600 shadow-lg shadow-blue-950/60">
-            <span className="h-5 w-5 rotate-45 rounded-sm border-2 border-white" />
-          </span>
-          <div>
-            <p className="text-xl font-bold tracking-tight">AnBridge</p>
-            <p className="text-sm tracking-[0.22em] text-sky-300">安沛 FINTECH</p>
-          </div>
-        </div>
-        <nav aria-label="服務導覽" className="mt-10 flex flex-wrap gap-2">
-          {services.map((service) => <a key={service} href="#services" className="rounded-full border border-blue-300/30 bg-white/10 px-4 py-2 text-sm font-medium text-blue-100 transition hover:bg-white/20">{service}</a>)}
-        </nav>
-        <div className="mt-12 grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <p className="text-sm font-semibold tracking-[0.2em] text-sky-300">CLEAR TERMS. FIRST.</p>
-            <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">信用卡換現金｜刷卡換現金<span className="mt-2 block text-sky-300">最高參考實拿 92%</span></h1>
-            <div className="mt-7 space-y-2 text-lg leading-relaxed text-slate-200 sm:text-xl"><p>市場常見約 85%～90%</p><p>安沛最高參考實拿 92%</p><p>同樣 10 萬元，最高可多拿約<span className="ml-2 font-bold text-amber-300">7,000 元</span></p></div>
-            <div className="mt-9"><CTA /></div>
-          </div>
-          <aside className="rounded-3xl border border-blue-300/25 bg-white/10 p-7 shadow-2xl backdrop-blur-sm sm:p-8">
-            <p className="text-sm font-semibold tracking-[0.16em] text-sky-300">BEFORE YOU DECIDE</p><h2 className="mt-3 text-2xl font-bold">安沛四大承諾</h2>
-            <ol className="mt-6 space-y-4">{promises.map((promise, index) => <li key={promise} className="flex gap-4"><span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-400 font-bold text-slate-950">{index + 1}</span><span className="pt-0.5 text-slate-100">{promise}</span></li>)}</ol>
-          </aside>
-        </div>
-      </div>
-    </section>
-  );
-}
+const costs = [["信用卡交易成本", "約 1%～2%"], ["政府發票稅金", "約 5%"], ["風險與營運成本", "約 1%～2%"], ["商品折舊成本", "約 3%～6%"], ["總成本", "約 10%～15%"]];
+export default function Hero() { return <><section className="bg-[#0f2747] px-6 pb-16 pt-24 text-white sm:px-8 lg:pt-28"><div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2"><div><p className="text-sm font-bold tracking-[.22em] text-sky-300">CREDIT/CARD CASH</p><h1 className="mt-4 text-5xl font-black leading-[1.08] text-white sm:text-6xl"><span className="block">刷卡換現金</span><span className="mt-2 block">信用卡換現金</span><span className="mt-5 block text-sky-300">最高實拿金額 93%</span></h1><p className="mt-5 text-xl font-black leading-8">相同10萬額度<br />安沛比別人多了7000元</p><p className="mt-6 border-l-2 border-sky-300 pl-4 text-sm font-semibold tracking-wide text-sky-100">誠信經營｜真實據點｜當面交易｜線上辦理</p><div className="mt-8"><CTA /></div></div><img src="/images/credit-card.png" alt="信用卡換現金服務示意" className="w-full rounded-3xl object-cover" /></div></section><section className="bg-[#f8fbff] px-6 py-20 sm:px-8"><div className="mx-auto max-w-6xl"><p className="text-sm font-bold tracking-[.22em] text-[#0f2747]">COST BREAKDOWN</p><h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">為什麼市場多數只有 85%～90%？</h2><p className="mt-4 text-slate-600">信用卡換現金並非單純扣比例，中間包含多項成本：</p><div className="mt-8 overflow-hidden rounded-3xl bg-white">{costs.map(([name, value]) => <div key={name} className="flex items-center justify-between border-b border-slate-100 px-6 py-5 last:border-0"><span className="font-bold text-slate-800">{name}</span><strong className="text-lg text-[#0f2747]">{value}</strong></div>)}</div><p className="mt-6 text-lg font-semibold text-[#0f2747]">而安沛優化流程與成本控管，讓客戶取得更好的實拿金額 <strong className="text-3xl text-[#1f5eff]">最高 93%</strong></p></div></section></>; }

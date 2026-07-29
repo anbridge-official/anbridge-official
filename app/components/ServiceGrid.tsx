@@ -1,17 +1,3 @@
-import CTA from "./CTA";
-
-const services = [
-  { title: "信用卡換現金", detail: "最高參考實拿 92%" },
-  { title: "刷卡換現金", detail: "最高參考實拿 92%" },
-  { title: "電信小額換現金", detail: "三大電信・Google Pay・Apple Pay" },
-  { title: "後支付換現金", detail: "先確認您使用的平台與可用額度", platforms: ["AFTEE", "街口", "分期服務", "其他平台"] },
-];
-
-export default function ServiceGrid() {
-  return (
-    <section id="services" className="bg-slate-50 px-6 py-16 sm:px-8 lg:py-20"><div className="mx-auto max-w-6xl">
-      <div className="max-w-2xl"><p className="text-sm font-semibold tracking-[0.18em] text-blue-700">SERVICES</p><h2 className="mt-3 text-3xl font-bold text-slate-950 sm:text-4xl">安沛四大服務</h2><p className="mt-4 text-slate-600">先在 LINE 確認適用方式、預估實拿與所有費用。</p></div>
-      <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">{services.map((service, index) => <article key={service.title} className="flex min-h-72 flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><span className="text-sm font-bold text-blue-700">0{index + 1}</span><h3 className="mt-6 text-xl font-bold text-slate-950">{service.title}</h3><p className="mt-3 leading-relaxed text-slate-600">{service.detail}</p>{service.platforms && <div className="mt-5 flex flex-wrap gap-2">{service.platforms.map((platform) => <span key={platform} className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-800">{platform}</span>)}</div>}<div className="mt-auto pt-6"><CTA /></div></article>)}</div>
-    </div></section>
-  );
-}
+import Link from "next/link";
+const services = [["信用卡換現金", "實拿金額最高 93%", "/"], ["刷卡換現金", "實拿金額最高 93%", "/"], ["電信小額換現金", "依額度評估實拿金額", "/services/telecom"], ["BNPL 後支付換現金", "業界參考實拿 5～7 折", "/services/bnpl"]];
+export default function ServiceGrid() { return <section className="bg-[#f8fbff] px-6 py-20 sm:px-8 lg:py-24"><div className="mx-auto max-w-6xl"><p className="text-sm font-bold tracking-[.22em] text-[#0f2747]">SERVICES</p><h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">服務項目</h2><div className="mt-8 divide-y divide-slate-200">{services.map(([title, desc, href], index) => <Link href={href} key={title} className="group flex flex-col gap-2 py-6 sm:flex-row sm:items-center sm:justify-between"><div><h3 className="text-2xl font-black text-slate-900">{title}</h3><p className="mt-1 text-slate-600">{desc}</p></div><span className="font-bold text-[#1f5eff]">馬上了解 →</span></Link>)}</div></div></section>; }

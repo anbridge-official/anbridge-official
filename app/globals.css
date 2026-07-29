@@ -1,21 +1,20 @@
 @import "tailwindcss";
-
-@theme {
-  --color-primary: #f97316;
+:root { --ink: #0f2747; --brand: #1677ff; --surface: #f8fbff; --surface-soft: #f3f7fd; --line: rgba(15, 39, 71, 0.08); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: linear-gradient(180deg, #fbfdff 0%, #f2f7fd 100%); color: var(--ink); font-family: var(--font-inter), var(--font-noto-sans-tc), "Microsoft JhengHei", sans-serif; font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+main { overflow-x: hidden; }
+p, li, summary { font-size: 1rem; line-height: 1.85; }
+h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.1; }
+section { scroll-margin-top: 96px; }
+@media (max-width: 767px) {
+  h1 { font-size: clamp(2.15rem, 6.2vw, 2.85rem); }
+  h2 { font-size: clamp(1.45rem, 4.2vw, 2rem); }
+  h3 { font-size: clamp(1.12rem, 3.4vw, 1.35rem); }
+  p, li, summary { font-size: 1rem; line-height: 1.9; }
 }
-
-html,
-body {
-  background: white;
-  color: var(--color-gray-900);
-  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-}
-
-details summary {
-  cursor: pointer;
-  font-weight: 600;
-}
-
-details[open] summary {
-  color: var(--color-primary);
-}
+::selection { background: #93c5fd; color: #0f2747; }
+details > summary { cursor: pointer; list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] summary { color: #1463d8; }
+@media (max-width: 767px) { body { padding-bottom: 76px; } }

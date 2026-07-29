@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import CTA from "../../components/CTA";
-
-export const metadata: Metadata = { title: "電信小額換現金｜安沛 AnBridge", description: "電信小額換現金服務，支援方式以當下可用條件確認為準。" };
-
-export default function TelecomCashPage() {
-  return <section className="mx-auto max-w-4xl px-6 py-28"><p className="text-sm font-semibold tracking-[0.18em] text-blue-700">ANBRIDGE SERVICE</p><h1 className="mt-3 text-4xl font-bold text-slate-950">電信小額換現金</h1><p className="mt-6 text-lg leading-relaxed text-slate-600">可先在 LINE 確認您使用的電信、可用方式、預估實拿與所有費用。</p><div className="mt-8"><CTA /></div></section>;
-}
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import Process from "../../components/Process";
+import TrustSignals from "../../components/TrustSignals";
+export const metadata: Metadata = { title: "電信小額換現金", description: "電信小額付費額度與支援應用說明。" };
+const faq = [["為什麼需要身分審核（KYC）？", "KYC 用於確認申請人與撥款帳號為同一人，降低冒用與交易風險；不會要求帳號密碼或簡訊驗證碼。"], ["電信小額換現金是什麼？", "依門號與可用代收額度，評估可使用的第三方點數或生活應用服務。"], ["哪些電信業者可以評估？", "中華電信、遠傳與台灣大哥大可先透過官方 LINE 確認。"], ["可以購買哪些項目？", "常見包含 Google Pay、Apple Pay、MyCard、Gash、LINE 貼圖與遊戲點數等支援項目。"], ["實拿金額如何計算？", "依可用額度、平台與流程確認，會先說明可參考範圍。"]];
+export default function Page() { return <><Header /><main className="pt-[76px]"><section className="bg-[#0f2747] px-6 py-16 text-white sm:px-8"><div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2"><div><p className="font-bold tracking-[.2em] text-sky-300">TELECOM MICRO-PAYMENT</p><h1 className="mt-4 text-4xl font-black sm:text-6xl">電信小額換現金</h1><p className="mt-5 text-lg text-slate-200">依額度評估實拿金額。支援 Google Pay、Apple Pay 與電信代收應用。</p><p className="mt-5 text-sm font-semibold text-sky-100">誠信經營｜真實據點｜當面交易｜線上辦理</p><div className="mt-8"><CTA /></div></div><img src="/images/telecom.png" alt="電信小額換現金服務示意" className="w-full rounded-3xl" /></div></section><section className="px-6 py-16 sm:px-8"><div className="mx-auto max-w-6xl"><h2 className="text-3xl font-black">三大電信支援</h2><p className="mt-4 text-slate-600">中華電信｜遠傳｜台灣大哥大</p></div></section><TrustSignals /><Process /><section className="px-6 py-20 sm:px-8"><div className="mx-auto max-w-5xl"><p className="text-sm font-bold tracking-[.22em] text-[#0f2747]">FAQ</p><h2 className="mt-3 text-3xl font-black">電信小額換現金完整說明</h2><div className="mt-8 space-y-4">{faq.map(([q,a]) => <article key={q} className="rounded-3xl bg-[#f8fbff] p-6"><h3 className="text-xl font-black">{q}</h3><p className="mt-3 leading-8 text-slate-600">{a}</p></article>)}</div></div></section></main><Footer /></>; }

@@ -1,3 +1,4 @@
-export default function CTA() {
-  return <a href="https://line.me/R/ti/p/@anbridge" target="_blank" rel="noopener noreferrer" aria-label="透過 LINE 免費估價，先確認實拿" className="inline-flex flex-col items-center justify-center rounded-xl bg-[#06C755] px-6 py-3 font-bold leading-tight text-white shadow-lg shadow-emerald-950/20 transition hover:-translate-y-0.5 hover:bg-[#05b64d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06C755]"><span>LINE 免費估價</span><span className="mt-1 text-xs font-medium text-emerald-50">免費・快速・先確認實拿</span></a>;
+type CTAProps = { compact?: boolean; label?: string };
+export default function CTA({ compact = false, label = "馬上了解實拿金額" }: CTAProps) {
+  return <a href="https://line.me/R/ti/p/@721azyez" target="_blank" rel="noopener noreferrer" data-cta-location="site" className={`inline-flex items-center justify-center gap-2 rounded-full bg-[#06c755] font-bold text-white shadow-[0_14px_32px_rgba(6,199,85,.24)] transition hover:-translate-y-0.5 ${compact ? "px-5 py-2.5 text-sm" : "px-7 py-3.5 text-base"}`}><span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white text-[8px] font-black tracking-[-.08em] text-[#06c755]">LINE</span>{label}</a>;
 }
