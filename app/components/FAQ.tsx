@@ -7,5 +7,6 @@ const sections = [
   ["刷卡換現金介紹與預借現金比較", ["刷卡換現金與信用卡換現金搜尋意圖高度相近，重點在流程、費用與實拿比例。", "信用卡換現金重視額度、費用與流程；預借現金通常涉及借款利息與還款安排，適用情境不同。"]],
   ["信用卡交易相關費用與實拿比例", ["海外交易服務費通常約 1.5%，由發卡銀行依規定收取，非安沛額外收費，實際以銀行帳單為準。", "一般市場常見實拿約 85%～90%，安沛參考可達最高約 93%，實際比例仍依當下條件確認。"]],
 ];
-export default function FAQ() { return <section id="faq" className="bg-white px-6 py-20 sm:px-8 lg:py-24"><div className="mx-auto max-w-5xl"><p className="text-sm font-bold tracking-[.22em] text-[#0f2747]">FAQ</p><h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">信用卡換現金完整說明</h2><div className="mt-10 grid gap-5">{{sections.map(([title, paragraphs], index) => <article key={index} className="...">
+export default function FAQ() { return <section id="faq" className="bg-white px-6 py-20 sm:px-8 lg:py-24"><div className="mx-auto max-w-5xl"><p className="text-sm font-bold tracking-[.22em] text-[#0f2747]">FAQ</p><h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">信用卡換現金完整說明</h2><div className="mt-10 grid gap-5"><div className="mt-10 grid gap-5">{sections.map(([title, paragraphs], index) => <article key={index} className="...">
 ="rounded-3xl border border-slate-200 bg-[#f8fbff] p-6 sm:p-8"><p className="text-sm font-black text-[#1f5eff]">0{index + 1}</p><h3 className="mt-3 text-2xl font-black text-slate-900">{title}</h3><div className="mt-5 space-y-3 leading-8 text-slate-700">{paragraphs.map((text) => <p key={text}>{index === 0 ? `✓ ${text}` : text}</p>)}</div></article>)}</div></div></section>; }
+
