@@ -1,1 +1,2 @@
-export { default, metadata } from "../postpay/page";
+import { redirect } from "next/navigation";
+export default function LegacyBnplPage() { redirect("/services/postpay"); }

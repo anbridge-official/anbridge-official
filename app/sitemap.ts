@@ -1,50 +1,35 @@
-import { MetadataRoute } from "next";
+import { promises as fs } from "fs";
+import path from "path";
+import type { MetadataRoute } from "next";
+import { SITE_URL } from "./lib/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://anbridge.vercel.app";
+const staticRoutes = ["/", "/faq", "/process", "/services/telecom", "/services/postpay"];
 
-  return [
-    {
-      url: `${baseUrl}/`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/services/credit-card`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/swipe`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/telecom`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/postpay`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/process`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-  ];
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const now = new Date();
+  const routes = new Set(staticRoutes);
+
+  async function walk(dir: string) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        if (entry.name === "_next" || entry.name === "api") continue;
+        await walk(fullPath);
+      } else if (entry.isFile() && entry.name === "page.tsx") {
+        const relativePath = path.relative(path.join(process.cwd(), "app"), fullPath).replace(/\\/g, "/");
+        const route = relativePath === "page.tsx" ? "/" : `/${relativePath.replace(/\/page\.tsx$/, "")}`;
+        routes.add(route);
+      }
+    }
+  }
+
+  await walk(path.join(process.cwd(), "app"));
+
+  return Array.from(routes).map((route) => ({
+    url: new URL(route, SITE_URL).toString(),
+    lastModified: now,
+    changeFrequency: route === "/" ? "weekly" : "monthly",
+    priority: route === "/" ? 1 : 0.8,
+  }));
 }

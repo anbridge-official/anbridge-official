@@ -1,3 +1,23 @@
+const rows = [
+  ["資金來源", "信用卡可用額度與交易條件", "銀行借款", "銀行借款", "典當品價值"],
+  ["確認重點", "實拿比例、流程與還款能力", "利率與繳款日", "利率、核貸與負債比", "物品估價與贖回條件"],
+  ["適用情境", "先確認額度、流程與可行範圍", "短期借款需求", "較長期資金規劃", "有可典當物品者"],
+];
+
 export default function Compare() {
-  return <section className="bg-white px-6 py-20 sm:px-8 lg:py-24"><div className="mx-auto max-w-5xl"><p className="text-center text-sm font-bold tracking-[.22em] text-[#0f2747]">COMPARE THE TAKE-HOME</p><h2 className="mt-3 text-center text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">相同10萬元，安沛實拿多7,000元</h2><div className="mt-10 grid overflow-hidden rounded-[28px] border border-slate-200 md:grid-cols-2"><div className="bg-slate-50 p-8 sm:p-10"><p className="text-sm font-bold tracking-[.18em] text-slate-500">一般市場</p><h3 className="mt-5 text-3xl font-black text-slate-900">其他店家</h3><p className="mt-6 text-4xl font-black text-slate-700">85,000～90,000 元</p></div><div className="bg-[#0f2747] p-8 text-white sm:p-10"><p className="text-sm font-bold tracking-[.18em] text-sky-300">ANBRIDGE</p><h3 className="mt-5 text-3xl font-black">安沛</h3><p className="mt-6 text-4xl font-black text-sky-300">最高 93,000 元</p></div></div></div></section>;
+  return (
+    <section className="site-section bg-white">
+      <div className="site-container">
+        <p className="site-eyebrow">COMPARE OPTIONS</p>
+        <h2 className="site-title">信用卡換現金與其他資金方式比較</h2>
+        <p className="site-copy">先了解差異，再選擇符合自己還款能力與需求的方式。</p>
+        <div className="mt-8 overflow-x-auto rounded-[1.75rem] border border-slate-200">
+          <table className="min-w-[760px] w-full border-collapse text-left text-sm">
+            <thead className="bg-[#0f2747] text-white"><tr><th className="px-5 py-4">比較項目</th><th className="px-5 py-4">信用卡換現金</th><th className="px-5 py-4">預借現金</th><th className="px-5 py-4">信用貸款</th><th className="px-5 py-4">當舖</th></tr></thead>
+            <tbody>{rows.map((row) => <tr key={row[0]} className="border-t border-slate-200 even:bg-slate-50">{row.map((cell, index) => <td key={cell} className={index === 0 ? "px-5 py-4 font-black text-slate-900" : "px-5 py-4 leading-6 text-slate-600"}>{cell}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
 }
